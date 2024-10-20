@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Answer Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="number"] {
+            padding: 5px;
+            width: 200px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Simple Calculator</h2>
+    <form id="calcForm">
+        <label for="x">Percentage Increase (x):</label>
+        <input type="number" id="x" placeholder="Enter x" required>
+
+        <label for="y">Number of Days (y):</label>
+        <input type="number" id="y" placeholder="Enter y" required>
+
+        <label for="z">Initial Worth (z):</label>
+        <input type="number" id="z" placeholder="Enter z" required>
+
+        <button type="button" onclick="calculate()">Calculate</button>
+    </form>
+
+    <div class="result">
+        <h3>Answer: <span id="result"></span></h3>
+    </div>
+
+    <script>
+        function calculate() {
+            const x = parseFloat(document.getElementById("x").value);
+            const y = parseInt(document.getElementById("y").value);
+            const z = parseFloat(document.getElementById("z").value);
+
+            // Calculation: (((100 + x) / 100) ^ y) * z
+            const answer = Math.pow(((100 + x) / 100), y) * z;
+
+            // Display result
+            document.getElementById("result").textContent = answer.toFixed(2);
+        }
+    </script>
+</body>
+</html>
